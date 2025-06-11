@@ -1,5 +1,5 @@
 {
-  "name": "components",
+  "name": "@zafeguard/components",
   "version": "1.0.0",
   "main": "./dist/commonjs/index.js",
   "license": "MIT",
