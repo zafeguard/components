@@ -29,8 +29,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build package
-        run: npm run prepare
-
       - name: Publish package
         run: npm publish --access=restricted
