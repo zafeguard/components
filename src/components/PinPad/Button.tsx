@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { PinPadButtonProps } from "./constants";
-import { Text } from "../Text";
+import { Text } from "@components/Text";
 
 function BaseButton(props: PinPadButtonProps) {
     const {

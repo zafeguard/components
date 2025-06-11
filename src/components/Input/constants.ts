@@ -1,4 +1,4 @@
-import { FontAwesomeIconName } from "../Icon";
+import { FontAwesomeIconName } from "@components/Icon";
 import { StyleSheet, TextInputProps } from "react-native";
 
 export type InputProps = {

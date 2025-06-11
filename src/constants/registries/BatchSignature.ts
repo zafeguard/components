@@ -1,4 +1,4 @@
-import { RegistryItemHelper } from "../../libs/ur-helper/registry";
+import { RegistryItemHelper } from "@libs/ur-helper/registry";
 import { UrRegistry } from "@ngraveio/bc-ur";
 
 type ItemPayload = {

@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { EColorScheme } from "../constants/scheme";
+import { EColorScheme } from "@constants/scheme";
 
 type Parameter = {
     readonly theme: EColorScheme;

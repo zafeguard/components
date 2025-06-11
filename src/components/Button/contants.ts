@@ -1,4 +1,4 @@
-import { VARIANTS } from "../../constants/variants";
+import { VARIANTS } from "@constants/variants";
 import { JSX } from "react";
 import { ColorValue, StyleProp, StyleSheet, ViewStyle } from "react-native";
 

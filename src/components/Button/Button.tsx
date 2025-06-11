@@ -1,5 +1,5 @@
-import { BORDER_RADIUS, VARIANTS } from '../../constants/variants';
-import { useThemeColor } from '../../hooks/useThemeColor';
+import { BORDER_RADIUS, VARIANTS } from '@constants/variants';
+import { useThemeColor } from '@hooks/useThemeColor';
 import * as Haptics from 'expo-haptics';
 import { Fragment, memo, useCallback } from "react";
 import {

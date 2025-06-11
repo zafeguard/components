@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Select from "./Select";
-import { View } from "../View";
-import { Text } from "../Text";
-import { BORDER_RADIUS } from "../../constants/variants";
-import { Icon } from "../Icon";
+import { View } from "@components/View";
+import { Text } from "@components/Text";
+import { BORDER_RADIUS } from "@constants/variants";
+import { Icon } from "@components/Icon";
 
 const meta = {
     title: "Select",

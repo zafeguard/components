@@ -1,9 +1,9 @@
 import { Fragment, memo } from "react";
 import { LoaderProps } from "./constants";
 import { ActivityIndicator } from "react-native";
-import { VARIANTS } from "../../constants/variants";
-import { View } from "../View";
-import { Text } from "../Text";
+import { VARIANTS } from "@constants/variants";
+import { View } from "@components/View";
+import { Text } from "@components/Text";
 import { useDot } from "./hooks/useDot";
 import { Wrapper } from "./Wrapper";
 

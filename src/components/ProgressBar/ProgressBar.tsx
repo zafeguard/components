@@ -1,8 +1,8 @@
 import { memo, useMemo } from "react";
 import { ProgressBarProps } from "./constants";
-import { View } from "../View";
+import { View } from "@components/View";
 import { StyleSheet } from "react-native";
-import { BORDER_RADIUS } from "../../constants/variants";
+import { BORDER_RADIUS } from "@constants/variants";
 
 function BaseProgressBar(props: ProgressBarProps) {
     const {

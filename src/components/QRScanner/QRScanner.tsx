@@ -2,15 +2,15 @@ import { memo, useCallback, useEffect, useState } from "react";
 import { QRScannerProps } from "./constants";
 import { BarcodeScanningResult, CameraView, PermissionStatus, useCameraPermissions } from "expo-camera";
 import { StyleSheet } from "react-native";
-import { BORDER_RADIUS } from "../../constants/variants";
-import { View } from "../View";
-import useReady from "../../hooks/useReady";
-import { Button } from "../Button";
-import { Icon } from "../Icon";
-import { Text } from "../Text";
+import { BORDER_RADIUS } from "@constants/variants";
+import { View } from "@components/View";
+import useReady from "@hooks/useReady";
+import { Button } from "@components/Button";
+import { Icon } from "@components/Icon";
+import { Text } from "@components/Text";
 import { UrFountainDecoder, UrRegistry } from "@ngraveio/bc-ur";
-import { ProgressBar } from "../ProgressBar";
-import { useThemeColor } from "../../hooks/useThemeColor";
+import { ProgressBar } from "@components/ProgressBar";
+import { useThemeColor } from "@hooks/useThemeColor";
 
 function BaseQRScanner(props: QRScannerProps) {
     const {

@@ -1,7 +1,7 @@
 import { Text as RNText } from "react-native";
 import { TEXT_SIZES, TEXT_VARIANTS, TextProps } from "./constants";
 import { memo } from "react";
-import { useThemeColor } from "../../hooks/useThemeColor";
+import { useThemeColor } from "@hooks/useThemeColor";
 
 function TextComponent(props: TextProps) {
     const {

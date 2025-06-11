@@ -1,4 +1,4 @@
-import { TEXT_SIZES } from "../Text";
+import { TEXT_SIZES } from "@components/Text";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { ComponentProps } from "react";
 import { ColorValue } from "react-native";

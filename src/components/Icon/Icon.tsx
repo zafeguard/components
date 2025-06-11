@@ -1,8 +1,8 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { memo, useMemo } from 'react';
 import { IconProps } from './constants';
-import { useThemeColor } from '../../hooks/useThemeColor';
-import { TEXT_SIZES } from '../Text';
+import { useThemeColor } from '@hooks/useThemeColor';
+import { TEXT_SIZES } from '@components/Text';
 import { Wrapper } from './Wrapper';
 
 function BaseIcon(props: IconProps) {

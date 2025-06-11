@@ -1,4 +1,4 @@
-import { ViewProps } from "../View";
+import { ViewProps } from "@components/View";
 import { ColorValue } from "react-native";
 
 export type LoaderProps = {

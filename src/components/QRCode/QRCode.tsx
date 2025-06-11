@@ -1,9 +1,9 @@
-import { Fragment, memo, useEffect, useMemo } from "react";
+import { memo, useEffect, useMemo } from "react";
 import { QRCodeProps } from "./constants";
 import { useAnimatedIndex } from "./hooks/useAnimatedIndex";
 import { UrFountainEncoder } from "@ngraveio/bc-ur";
 import RNQRCode from 'react-native-qrcode-svg';
-import { View } from "../View";
+import { View } from "@components/View";
 
 function BaseQRCode(props: QRCodeProps) {
     const {

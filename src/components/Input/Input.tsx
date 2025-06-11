@@ -2,9 +2,9 @@ import { memo, useMemo, useState } from "react";
 import { INPUT_SIZES, InputProps } from "./constants";
 import { Wrapper } from "./Wrapper";
 import { Platform, StyleSheet, TextStyle, View } from "react-native";
-import { BORDER_RADIUS } from "../../constants/variants";
-import { Icon } from "../Icon";
-import { useThemeColor } from "../../hooks/useThemeColor";
+import { BORDER_RADIUS } from "@constants/variants";
+import { Icon } from "@components/Icon";
+import { useThemeColor } from "@hooks/useThemeColor";
 
 function BaseInput(props: InputProps) {
     const {

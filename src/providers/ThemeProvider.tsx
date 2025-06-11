@@ -1,7 +1,7 @@
 import { DarkTheme, DefaultTheme, ThemeProvider as RNThemeProvider } from "@react-navigation/native";
 import { memo, PropsWithChildren, useMemo, useState } from "react";
-import { Context } from "../contexts/Theme";
-import { EColorScheme } from "../constants/scheme";
+import { Context } from "@contexts/Theme";
+import { EColorScheme } from "@constants/scheme";
 import { useFonts } from 'expo-font';
 import { PortalProvider } from "@gorhom/portal";
 

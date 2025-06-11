@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import BottomSheet from "./BottomSheet";
 import { Button, View } from "react-native";
-import { Text } from "../Text";
+import { Text } from "@components/Text";
 import { useRef } from "react";
 import { BottomSheetView } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";

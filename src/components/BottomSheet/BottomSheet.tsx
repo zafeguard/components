@@ -2,10 +2,10 @@ import { forwardRef, memo, Ref, useCallback, useEffect, useImperativeHandle, use
 import { BottomSheetProps } from "./constants";
 import CoreBottomSheet, { BottomSheetBackdrop, BottomSheetBackdropProps, BottomSheetView } from "@gorhom/bottom-sheet";
 import { Dimensions, StyleSheet } from "react-native";
-import { useThemeColor } from "../../hooks/useThemeColor";
-import { toRGB } from "../../libs/color";
+import { useThemeColor } from "@hooks/useThemeColor";
+import { toRGB } from "@libs/color";
 import { useSafeArea } from "./hooks/useSafeArea";
-import useKeyboard from "../../hooks/useKeyboard";
+import useKeyboard from "@hooks/useKeyboard";
 
 const BackdropComponent = memo((props: BottomSheetBackdropProps) => (
     <BottomSheetBackdrop {...props}

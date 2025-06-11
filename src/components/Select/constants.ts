@@ -1,4 +1,4 @@
-import { FontAwesomeIconName } from "../Icon";
+import { FontAwesomeIconName } from "@components/Icon";
 import { JSX } from "react";
 
 export type SelectItemProps<T> = {

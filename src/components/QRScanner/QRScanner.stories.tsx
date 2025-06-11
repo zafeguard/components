@@ -8,8 +8,8 @@ import {
     PartialSignatureRegistry,
     SecureShareRegistry,
     SessionRegistry
-} from "../../constants/registries";
-import { View } from "../View";
+} from "@constants/registries";
+import { View } from "@components/View";
 
 const meta = {
     title: "QRScanner",

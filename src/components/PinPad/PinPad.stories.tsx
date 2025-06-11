@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import PinPad from "./PinPad";
-import { View } from "../View";
+import { View } from "@components/View";
 
 const meta = {
     title: "PinPad",

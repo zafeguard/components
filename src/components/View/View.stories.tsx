@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { View as RNView } from "react-native";
 import View from "./View";
-import { Text } from "../Text";
+import { Text } from "@components/Text";
 
 const meta = {
     title: "View",

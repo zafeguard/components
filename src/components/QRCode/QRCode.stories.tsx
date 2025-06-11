@@ -8,9 +8,9 @@ import {
     createBatchSignature,
     createBatchSignRequest,
     createPartialSignature
-} from "../../constants/registries";
-import { Text } from "../Text";
-import { View } from "../View";
+} from "@constants/registries";
+import { Text } from "@components/Text";
+import { View } from "@components/View";
 
 const meta = {
     title: "QRCode",

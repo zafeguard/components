@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { View as RNView } from "react-native";
 import { ViewProps } from "./constants";
-import { useThemeColor } from "../../hooks/useThemeColor";
+import { useThemeColor } from "@hooks/useThemeColor";
 
 function BaseView(props: ViewProps) {
     const {

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Text from "./Text";
-import { VARIANTS } from "../../constants/variants";
-import { View } from "../View";
+import { VARIANTS } from "@constants/variants";
+import { View } from "@components/View";
 
 const meta = {
     title: "Text",

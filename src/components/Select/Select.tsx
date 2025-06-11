@@ -1,9 +1,9 @@
 import { memo, useState } from "react"
 import { SelectProps } from "./constants";
-import { View } from "../View";
+import { View } from "@components/View";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { Icon } from "../Icon";
-import { Text } from "../Text";
+import { Icon } from "@components/Icon";
+import { Text } from "@components/Text";
 
 function BaseSelect<T extends any>(props: SelectProps<T>) {
     const {

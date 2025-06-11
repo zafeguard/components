@@ -1,4 +1,4 @@
-import { View } from "../View";
+import { View } from "@components/View";
 import _ from "lodash";
 import { memo, useMemo } from "react";
 import { StyleSheet } from "react-native";

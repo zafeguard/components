@@ -1,7 +1,7 @@
-import { View } from "../View";
-import { BORDER_RADIUS } from "../../constants/variants";
-import { useThemeColor } from "../../hooks/useThemeColor";
-import { toRGB } from "../../libs/color";
+import { View } from "@components/View";
+import { BORDER_RADIUS } from "@constants/variants";
+import { useThemeColor } from "@hooks/useThemeColor";
+import { toRGB } from "@libs/color";
 import { memo, PropsWithChildren } from "react";
 import { StyleSheet } from "react-native";
 
