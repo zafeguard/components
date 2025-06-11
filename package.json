@@ -86,7 +86,6 @@
       "react-native-web": "^0.20.0"
     }
   },
-  "private": true,
   "exports": {
     ".": {
       "source": "./src/index.ts",
