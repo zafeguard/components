@@ -16,6 +16,13 @@
     "storybook:android": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start --android",
     "prepare": "bob build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zafeguard/components.git"
+  },
+  "publishConfig": {
+    "@zafeguard:registry": "https://npm.pkg.github.com"
+  },
   "dependencies": {
     "@gorhom/bottom-sheet": "^5.1.2",
     "@gorhom/portal": "^1.0.14",
