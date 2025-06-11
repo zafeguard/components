@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { ColorValue, StyleSheet, TextStyle } from "react-native";
+import { ColorValue, StyleProp, StyleSheet, TextStyle } from "react-native";
 
 export type TextProps = {
     readonly variant?: keyof typeof TEXT_VARIANTS;
@@ -8,7 +8,7 @@ export type TextProps = {
     readonly size?: keyof typeof TEXT_SIZES;
     readonly children: string | ReactNode;
     readonly color?: ColorValue;
-    readonly style?: TextStyle;
+    readonly style?: StyleProp<TextStyle>;
     readonly center?: boolean;
 };
 export const TEXT_VARIANTS = {
