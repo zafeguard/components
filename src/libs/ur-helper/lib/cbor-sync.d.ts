@@ -1,5 +1,5 @@
 export namespace config {
-    const useToJSON: boolean;
+    export const useToJSON: boolean = false;
 }
 export function addWriter(format: any, writerFunction: any): void;
 export function addReader(format: any, readerFunction: any): void;
