@@ -10,9 +10,3 @@ export function useColorScheme () {
         return scheme;
     return theme;
 }
-export function useInvertColorScheme () {
-    const theme = useColorScheme();
-    if (theme === EColorScheme.DARK) return EColorScheme.LIGHT;
-    if (theme === EColorScheme.LIGHT) return EColorScheme.DARK;
-    return theme;
-}
