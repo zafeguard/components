@@ -7,6 +7,7 @@ export * from "./PinPad";
 export * from "./ProgressBar";
 export * from "./RegistryQRCode";
 export * from "./RegistryQRScanner";
+export * from "./QRCode";
 export * from "./Select";
 export * from "./Text";
 export * from "./View";
