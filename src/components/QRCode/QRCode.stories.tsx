@@ -2,12 +2,13 @@ import type { Meta, StoryObj } from "@storybook/react";
 import QRCode from "./QRCode";
 import {
     createKeyExport,
-    createKeyIdentity,
+    createSessionIdentity,
     createSecureShare,
     createSession,
     createBatchSignature,
     createBatchSignRequest,
-    createPartialSignature
+    createPartialSignature,
+    createKeyRecover
 } from "@constants/registries";
 import { Text } from "@components/Text";
 import { View } from "@components/View";
@@ -33,13 +34,21 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const KeyIdentity: Story = {
+export const SessionIdentity: Story = {
     args: {
-        registry: createKeyIdentity({
+        registry: createSessionIdentity({
             name: "Test",
             sessionId: "00000000000000000000000000000000",
             fingerprint: "0000000000000000000000000000000",
             publicKey: "age1testtesttesttesttesttesttest",
+        }),
+    },
+};
+export const KeyRecover: Story = {
+    args: {
+        registry: createKeyRecover({
+            publicKey: "age1testtesttesttesttesttesttest",
+            keyShare: "0000000000000000000000000000000",
         }),
     },
 };
