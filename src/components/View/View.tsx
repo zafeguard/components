@@ -27,7 +27,7 @@ function BaseView(props: ViewProps) {
                     alignItems: align,
                     flex,
                     gap,
-                    width: fluid ? "100%" : undefined,
+                    width: fluid ? "100%" : "auto",
                 },
                 style,
             ]}
