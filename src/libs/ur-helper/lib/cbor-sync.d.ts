@@ -6,7 +6,7 @@ export function addReader(format: any, readerFunction: any): void;
 export function encode(data: any, format: any): any;
 export function encodeDataItem(data: any, format?: any): any;
 export function decode(data: any, format: any): any;
-export function decodeToDataItem(data: any, format?: any): import("./DataItem").DataItem;
+export function decodeToDataItem(data: any, format?: any): import("./data-item").DataItem;
 export function addSemanticEncode(tag: any, fn: any): {
     config: {
         useToJSON: boolean;
@@ -16,7 +16,7 @@ export function addSemanticEncode(tag: any, fn: any): {
     encode: (data: any, format: any) => any;
     encodeDataItem: (data: any, format: any) => any;
     decode: (data: any, format: any) => any;
-    decodeToDataItem: (data: any, format: any) => import("./DataItem").DataItem;
+    decodeToDataItem: (data: any, format: any) => import("./data-item").DataItem;
     addSemanticEncode: (tag: any, fn: any) => any;
     addSemanticDecode: (tag: any, fn: any) => any;
 };
