@@ -6,7 +6,7 @@ type Payload = {
     readonly keyId: string;
     readonly derivationPath?: number[];
 };
-export const BatchSignRequestRegistry = RegistryItemHelper.createKeyMap<Record<keyof Payload, number>>({
+export const BatchSignRequestRegistry = RegistryItemHelper.createKeyMap<Record<keyof Payload, number>, Payload>({
     nonce: 1,
     messageHashes: 2,
     keyId: 3,

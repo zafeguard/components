@@ -22,12 +22,12 @@ signature-item = {
 }
 `
 
-export const SignatureItemRegistry = RegistryItemHelper.createKeyMap<Record<keyof ItemPayload, number>>({
+export const SignatureItemRegistry = RegistryItemHelper.createKeyMap<Record<keyof ItemPayload, number>, ItemPayload>({
     signature: 1,
     recoveryId: 2,
     messageHash: 3,
 }, "signature-item", Signature_CDDL, 600);
-export const BatchSignatureRegistry = RegistryItemHelper.createKeyMap<Record<keyof CollectionPayload, number>>({
+export const BatchSignatureRegistry = RegistryItemHelper.createKeyMap<Record<keyof CollectionPayload, number>, CollectionPayload>({
     items: 1,
 }, "batch-signature", Collection_CDDL, 601);
 export const createBatchSignature = (payload: Array<ItemPayload>) => {

@@ -9,11 +9,11 @@ type Payload = {
     readonly publicKeys: string[];
     readonly keyPair: KeyPairPayload;
 };
-export const KeyPairExportRegistry = RegistryItemHelper.createKeyMap<Record<keyof KeyPairPayload, number>>({
+export const KeyPairExportRegistry = RegistryItemHelper.createKeyMap<Record<keyof KeyPairPayload, number>, KeyPairPayload>({
     privateKey: 1,
     publicKey: 2,
 }, "keypair");
-export const KeyExportRegistry = RegistryItemHelper.createKeyMap<Record<keyof Payload, number>>({
+export const KeyExportRegistry = RegistryItemHelper.createKeyMap<Record<keyof Payload, number>, Payload>({
     keyShare: 1,
     publicKeys: 2,
     keyPair: 3,

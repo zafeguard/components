@@ -4,7 +4,7 @@ type Payload = {
     readonly values: string[];
     readonly publicKey: string;
 };
-export const PartialSignatureRegistry = RegistryItemHelper.createKeyMap<Record<keyof Payload, number>>({
+export const PartialSignatureRegistry = RegistryItemHelper.createKeyMap<Record<keyof Payload, number>, Payload>({
     values: 1,
     publicKey: 2,
 }, "partial-signature");

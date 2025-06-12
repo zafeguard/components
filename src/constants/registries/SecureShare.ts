@@ -14,7 +14,7 @@ secure-share = #6.112({
     shares: [+ #6.112(text)]
 })
 `
-export const SecureShareRegistry = RegistryItemHelper.createKeyMap<Record<keyof Payload, number>>({
+export const SecureShareRegistry = RegistryItemHelper.createKeyMap<Record<keyof Payload, number>, Payload>({
     sessionId: 1,
     publicKey: 2,
     commitment: 3,

@@ -7,7 +7,7 @@ type Payload = {
     readonly threshold: number;
     readonly maxDevices: number;
 };
-export const SessionRegistry = RegistryItemHelper.createKeyMap<Record<keyof Payload, number>>({
+export const SessionRegistry = RegistryItemHelper.createKeyMap<Record<keyof Payload, number>, Payload>({
     curve: 1,
     type: 2,
     nonce: 3,
