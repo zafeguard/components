@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import QRScanner from "./QRScanner";
+import RegistryQRScanner from "./RegistryQRScanner";
 import {
     BatchSignatureRegistry,
     BatchSignRequestRegistry,
@@ -13,8 +13,8 @@ import {
 import { View } from "@components/View";
 
 const meta = {
-    title: "QRScanner",
-    component: QRScanner,
+    title: "RegistryQRScanner",
+    component: RegistryQRScanner,
     args: {},
     decorators: [
         (Story) => (
@@ -23,7 +23,7 @@ const meta = {
             </View>
         ),
     ],
-} satisfies Meta<typeof QRScanner>;
+} satisfies Meta<typeof RegistryQRScanner>;
 
 export default meta;
 
@@ -31,7 +31,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
     args: {
-        allowedRegistries: [
+        allowedItems: [
             BatchSignatureRegistry,
             BatchSignRequestRegistry,
             KeyExportRegistry,

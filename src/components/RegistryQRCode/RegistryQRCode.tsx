@@ -1,11 +1,11 @@
 import { memo, useEffect, useMemo } from "react";
-import { QRCodeProps } from "./constants";
+import { RegistryQRCodeProps } from "./constants";
 import { useAnimatedIndex } from "./hooks/useAnimatedIndex";
 import { UrFountainEncoder } from "@ngraveio/bc-ur";
 import RNQRCode from 'react-native-qrcode-svg';
 import { View } from "@components/View";
 
-function BaseQRCode(props: QRCodeProps) {
+function BaseRegistryQRCode(props: RegistryQRCodeProps) {
     const {
         registry,
         interval = 500,
@@ -31,6 +31,6 @@ function BaseQRCode(props: QRCodeProps) {
         </View>
     );
 }
-const QRCode = memo(BaseQRCode);
-QRCode.displayName = "QRCode";
-export default QRCode;
+const RegistryQRCode = memo(BaseRegistryQRCode);
+RegistryQRCode.displayName = "RegistryQRCode";
+export default RegistryQRCode;

@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { QRScannerProps } from "./constants";
+import { RegistryQRScannerProps } from "./constants";
 import { BarcodeScanningResult, CameraView, PermissionStatus, useCameraPermissions } from "expo-camera";
 import { StyleSheet } from "react-native";
 import { BORDER_RADIUS } from "@constants/variants";
@@ -12,9 +12,9 @@ import { UrFountainDecoder, UrRegistry } from "@ngraveio/bc-ur";
 import { ProgressBar } from "@components/ProgressBar";
 import { useThemeColor } from "@hooks/useThemeColor";
 
-function BaseQRScanner(props: QRScannerProps) {
+function BaseRegistryQRScanner(props: RegistryQRScannerProps) {
     const {
-        allowedRegistries,
+        allowedItems,
         size,
         onDetected
     } = props;
@@ -51,7 +51,7 @@ function BaseQRScanner(props: QRScannerProps) {
             if (!decoder.isComplete()) return;
 
             const resultUR = decoder.resultUr;
-            for (const Registry of allowedRegistries) {
+            for (const Registry of allowedItems) {
                 if (decoder.expectedType !== Registry.URType) continue;
                 const registry = Registry.fromCBORData(resultUR.getPayloadCbor());
                 if (!registry) continue;
@@ -65,12 +65,12 @@ function BaseQRScanner(props: QRScannerProps) {
         }
     }, [decoder, onDetected]);
     useEffect(() => {
-        if (allowedRegistries.length <= 0) return;
-        UrRegistry.addItems(allowedRegistries);
+        if (allowedItems.length <= 0) return;
+        UrRegistry.addItems(allowedItems);
         return () => {
             UrRegistry.clearRegistry();
         }
-    }, [allowedRegistries]);
+    }, [allowedItems]);
 
     if (!permission || !permission.granted) return (
         <View style={styles.grantPermissionContainer} justify="center">
@@ -117,9 +117,9 @@ function BaseQRScanner(props: QRScannerProps) {
         </View>
     )
 }
-const QRScanner = memo(BaseQRScanner);
-QRScanner.displayName = "QRScanner";
-export default QRScanner;
+const RegistryQRScanner = memo(BaseRegistryQRScanner);
+RegistryQRScanner.displayName = "RegistryQRScanner";
+export default RegistryQRScanner;
 
 const styles = StyleSheet.create({
     container: {

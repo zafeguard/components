@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import QRCode from "./QRCode";
+import RegistryQRCode from "./RegistryQRCode";
 import {
     createKeyExport,
     createSessionIdentity,
@@ -14,8 +14,8 @@ import { Text } from "@components/Text";
 import { View } from "@components/View";
 
 const meta = {
-    title: "QRCode",
-    component: QRCode,
+    title: "RegistryQRCode",
+    component: RegistryQRCode,
     args: {},
     decorators: [
         (Story, context) => (
@@ -28,7 +28,7 @@ const meta = {
             </View>
         ),
     ],
-} satisfies Meta<typeof QRCode>;
+} satisfies Meta<typeof RegistryQRCode>;
 
 export default meta;
 
