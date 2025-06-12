@@ -5,6 +5,7 @@ type KeyPairPayload = {
     readonly publicKey: string;
 };
 type Payload = {
+    readonly curve: string;
     readonly keyShare: string;
     readonly publicKeys: string[];
     readonly keyPair: KeyPairPayload;
@@ -14,9 +15,10 @@ export const KeyPairExportRegistry = RegistryItemHelper.createKeyMap<Record<keyo
     publicKey: 2,
 }, "keypair");
 export const KeyExportRegistry = RegistryItemHelper.createKeyMap<Record<keyof Payload, number>, Payload>({
-    keyShare: 1,
-    publicKeys: 2,
-    keyPair: 3,
+    curve: 1,
+    keyShare: 2,
+    publicKeys: 3,
+    keyPair: 4,
 }, "key-export");
 export const createKeyExport = (payload: Payload) => new KeyExportRegistry(Object.assign(payload, {
     keyPair: new KeyPairExportRegistry(payload.keyPair),
