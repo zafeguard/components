@@ -62,7 +62,7 @@ const BaseBottomSheet = forwardRef<CoreBottomSheet, BottomSheetProps>((props: Bo
 
     useEffect(() => {
         if (!isReady || isCloseRequested) return handleClose();
-        if (isOpen || !isKeyboardVisible) {
+        if (isOpen && !isKeyboardVisible) {
             snapToPoint();
             return;
         }
