@@ -9,6 +9,7 @@ function BaseContainer(props: ContainerProps) {
     } = props;
     return (
         <View
+            flex={1}
             style={[
                 style,
                 { display: "contents" }
