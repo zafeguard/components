@@ -1,6 +1,6 @@
 import { forwardRef, memo, Ref, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { BottomSheetProps } from "./constants";
-import CoreBottomSheet, { BottomSheetBackdrop, BottomSheetBackdropProps, BottomSheetView } from "@gorhom/bottom-sheet";
+import CoreBottomSheet, { BottomSheetBackdrop, BottomSheetBackdropProps } from "@gorhom/bottom-sheet";
 import { Dimensions, StyleSheet } from "react-native";
 import { useThemeColor } from "@hooks/useThemeColor";
 import { toRGB } from "@libs/color";
@@ -72,10 +72,11 @@ const BaseBottomSheet = forwardRef<CoreBottomSheet, BottomSheetProps>((props: Bo
     return (
         <CoreBottomSheet
             ref={innerRef}
-            index={defaultOpen ? 1 : -1}
+            index={defaultOpen ? 0 : -1}
             onChange={onChange}
             onClose={() => setIsCloseRequested(true)}
             snapPoints={[contentHeight]}
+            enableDynamicSizing={false}
             topInset={top}
             enablePanDownToClose
             bottomInset={bottom + bottomInset}

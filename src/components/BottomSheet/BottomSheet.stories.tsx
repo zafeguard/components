@@ -14,7 +14,7 @@ const meta = {
         const ref = useRef<BottomSheet>(null);
         return (
             <GestureHandlerRootView style={{ flex: 1, height: 400 }}>
-                <View style={{ gap: 4 }}>
+                <View style={{ gap: 4, flex: 1, height: 400 }}>
                     <Button title="Open" onPress={() => ref.current?.expand()} />
                     <Button title="Close" onPress={() => ref.current?.close()} />
                 </View>
