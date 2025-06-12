@@ -8,8 +8,8 @@ function BaseView(props: ViewProps) {
         style,
         children,
         direction,
-        justify = "flex-start",
-        align = "center",
+        justify,
+        align,
         flex,
         gap = 8,
         transparent,
@@ -19,13 +19,9 @@ function BaseView(props: ViewProps) {
     return (
         <RNView
             style={[
-                direction ? {
-                    flexDirection: direction,
-                } : {
-                    display: "contents",
-                },
                 {
                     backgroundColor: transparent ? "transparent" : (overriddenBackgroundColor ?? backgroundColor),
+                    flexDirection: direction,
                     justifyContent: justify,
                     alignItems: align,
                     flex,
