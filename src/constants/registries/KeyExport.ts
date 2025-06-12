@@ -3,6 +3,7 @@ import { RegistryItemHelper } from "@libs/ur-helper/registry";
 type KeyPairPayload = {
     readonly privateKey: string;
     readonly publicKey: string;
+    readonly fingerprint?: string;
 };
 type Payload = {
     readonly curve: string;
@@ -13,6 +14,7 @@ type Payload = {
 export const KeyPairExportRegistry = RegistryItemHelper.createKeyMap<Record<keyof KeyPairPayload, number>, KeyPairPayload>({
     privateKey: 1,
     publicKey: 2,
+    fingerprint: 3,
 }, "keypair");
 export const KeyExportRegistry = RegistryItemHelper.createKeyMap<Record<keyof Payload, number>, Payload>({
     curve: 1,
