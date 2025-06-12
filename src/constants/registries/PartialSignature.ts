@@ -9,3 +9,4 @@ export const PartialSignatureRegistry = RegistryItemHelper.createKeyMap<Record<k
     publicKey: 2,
 }, "partial-signature");
 export const createPartialSignature = (payload: Payload) => new PartialSignatureRegistry(payload);
+export type PartialSignatureRegistryItem = ReturnType<typeof createPartialSignature>;

@@ -21,3 +21,4 @@ export const KeyExportRegistry = RegistryItemHelper.createKeyMap<Record<keyof Pa
 export const createKeyExport = (payload: Payload) => new KeyExportRegistry(Object.assign(payload, {
     keyPair: new KeyPairExportRegistry(payload.keyPair),
 }));
+export type KeyExportRegistryItem = ReturnType<typeof createKeyExport>;

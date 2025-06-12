@@ -15,3 +15,4 @@ export const SessionRegistry = RegistryItemHelper.createKeyMap<Record<keyof Payl
     maxDevices: 5,
 }, "session");
 export const createSession = (payload: Payload) => new SessionRegistry(payload);
+export type SessionRegistryItem = ReturnType<typeof createSession>;

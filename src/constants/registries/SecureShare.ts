@@ -21,3 +21,4 @@ export const SecureShareRegistry = RegistryItemHelper.createKeyMap<Record<keyof 
     shares: 4,
 }, "secure-share", CDDL);
 export const createSecureShare = (payload: Payload) => new SecureShareRegistry(payload);
+export type SecureShareRegistryItem = ReturnType<typeof createSecureShare>;

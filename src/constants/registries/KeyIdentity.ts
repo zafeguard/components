@@ -9,3 +9,4 @@ export const KeyIdentityRegistry = RegistryItemHelper.createKeyMap<Record<keyof 
     publicKey: 2,
 }, "identity");
 export const createKeyIdentity = (payload: Payload) => new KeyIdentityRegistry(payload);
+export type KeyIdentityRegistryItem = ReturnType<typeof createKeyIdentity>;

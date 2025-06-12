@@ -13,3 +13,4 @@ export const BatchSignRequestRegistry = RegistryItemHelper.createKeyMap<Record<k
     derivationPath: 4
 }, "batch-sign-request");
 export const createBatchSignRequest = (payload: Payload) => new BatchSignRequestRegistry(payload);
+export type BatchSignRequestRegistryItem = ReturnType<typeof createBatchSignRequest>;

@@ -37,3 +37,4 @@ export const createBatchSignature = (payload: Array<ItemPayload>) => {
         items: payload.map(item => new SignatureItemRegistry(item))
     });
 }
+export type BatchSignatureRegistryItem = ReturnType<typeof createBatchSignature>;
