@@ -11,8 +11,9 @@ function BaseView(props: ViewProps) {
         justify,
         align,
         flex,
-        gap = 8,
+        gap = 0,
         transparent,
+        fluid,
         backgroundColor: overriddenBackgroundColor,
     } = props;
     const { default: backgroundColor } = useThemeColor("background");
@@ -26,7 +27,7 @@ function BaseView(props: ViewProps) {
                     alignItems: align,
                     flex,
                     gap,
-                    width: "100%",
+                    width: fluid ? "100%" : undefined,
                 },
                 style,
             ]}
