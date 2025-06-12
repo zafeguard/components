@@ -77,7 +77,7 @@ function BaseQRScanner(props: QRScannerProps) {
             <Icon name="exclamation-triangle" color={"orange"} size={64} />
             <View justify="center" gap={0}>
                 <Text size="lg" weight="bold" center>Permission Required</Text>
-                <Text center>We need your permission to show the camera</Text>
+                <Text center muted size="sm">We need your permission to show the camera</Text>
             </View>
             <Button
                 leftComponent={({ color }) => <Icon name="gear" color={color} />}
