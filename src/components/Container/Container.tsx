@@ -5,7 +5,8 @@ import { memo } from "react";
 function BaseContainer(props: ContainerProps) {
     const {
         children,
-        style
+        style,
+        ...rest
     } = props;
     return (
         <View
@@ -14,6 +15,7 @@ function BaseContainer(props: ContainerProps) {
                 style,
                 { display: "contents" }
             ]}
+            {...rest}
         >
             {children}
         </View>

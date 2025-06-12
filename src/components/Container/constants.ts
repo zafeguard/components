@@ -1,6 +1,3 @@
-import { PropsWithChildren } from "react";
-import { StyleProp, ViewStyle } from "react-native";
+import { ViewProps } from "@components/View";
 
-export type ContainerProps = PropsWithChildren<{
-    readonly style?: StyleProp<ViewStyle>;
-}>;
+export type ContainerProps = Omit<ViewProps, "flex">;
