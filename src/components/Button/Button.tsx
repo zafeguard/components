@@ -22,6 +22,7 @@ function BaseButton(props: ButtonProps) {
         hapticTouch,
         disabled,
         style,
+        fluid,
     } = props;
     const isOutlineStyle = variant === 'outline';
     const variantProps = VARIANTS[variant];
@@ -36,7 +37,7 @@ function BaseButton(props: ButtonProps) {
     }, [onPress, hapticTouch, disabled]);
 
     const createComponent = useCallback((component?: ButtonSubComponent) => {
-        if (!component) return <Fragment></Fragment>;
+        if (!component) return <View style={{ width: 12 }} />;
         if (typeof component === "function")
             return component({
                 color: variantProps.text ?? textColor.default,
@@ -49,7 +50,7 @@ function BaseButton(props: ButtonProps) {
         <TouchableOpacity
             style={[
                 {
-                    width: "100%",
+                    width: fluid ? "100%" : "auto",
                     backgroundColor: isOutlineStyle ? 'transparent' : variantProps.background,
                     borderColor: variantProps.border,
                     borderWidth: 2,
@@ -63,16 +64,7 @@ function BaseButton(props: ButtonProps) {
             disabled={disabled}
             activeOpacity={disabled ? 1 : 0.75}
         >
-            <View
-                style={[
-                    {
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        gap: 8,
-                    },
-                ]}
-            >
+            <View style={styles.container}>
                 {[
                     createComponent(leftComponent),
                     text && (
@@ -107,4 +99,10 @@ const styles = StyleSheet.create({
     disabled: {
         opacity: 0.5,
     },
+    container: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: 8,
+    }
 })
