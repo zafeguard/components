@@ -1,11 +1,8 @@
-import { RegistryItem, RegistryItemBase, RegistryItemClass } from "@ngraveio/bc-ur";
+import { GenericRegistryItemBase } from "@libs/ur-helper";
+import { RegistryItemBase, RegistryItemClass } from "@ngraveio/bc-ur";
 
-type OnDetectedParameters<T extends object = object> = {
-    readonly type: string;
-    readonly data: T;
-};
 export type QRScannerProps = {
     readonly allowedRegistries: Array<RegistryItemClass<RegistryItemBase>>;
     readonly size?: number;
-    readonly onDetected?: (result: RegistryItem) => void;
+    readonly onDetected?: (result: GenericRegistryItemBase<any>) => void;
 };
