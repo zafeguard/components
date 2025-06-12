@@ -18,7 +18,7 @@ function BaseQRCode(props: QRCodeProps) {
     }, [values, initialize]);
 
     return (
-        <View style={{padding: 8, backgroundColor: "white", width: size + 8, height: size + 8}}>
+        <View justify="center" align="center" style={{padding: 8, backgroundColor: "white", width: size + 8, height: size + 8}}>
             <RNQRCode size={size} value={values[currentIndex]} />
         </View>
     );
