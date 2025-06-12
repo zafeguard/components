@@ -1,3 +1,3 @@
-import QRCode from "./QRCode.stories";
+import QRCode from "./QRCode";
 export * from "./constants";
 export { QRCode };
