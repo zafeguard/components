@@ -10,3 +10,4 @@ export * from "./QRScanner";
 export * from "./Select";
 export * from "./Text";
 export * from "./View";
+export * from "./Container";
