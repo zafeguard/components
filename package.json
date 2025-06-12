@@ -116,13 +116,15 @@
       [
         "module",
         {
-          "esm": true
+          "esm": true,
+          "configFile": true
         }
       ],
       [
         "commonjs",
         {
-          "esm": true
+          "esm": true,
+          "configFile": true
         }
       ],
       "typescript"
