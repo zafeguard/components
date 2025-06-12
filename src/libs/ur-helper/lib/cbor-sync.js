@@ -7,7 +7,7 @@
         global.CBOR = factory();
     }
 })(this, function () {
-    const { DataItem } = require('./DataItem');
+    const { DataItem } = require('./data-item');
     var CBOR = (function () {
         function BinaryHex(hex) {
             this.$hex = hex;
