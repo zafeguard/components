@@ -36,6 +36,7 @@ type Story = StoryObj<typeof meta>;
 export const KeyIdentity: Story = {
     args: {
         registry: createKeyIdentity({
+            name: "Test",
             sessionId: "00000000000000000000000000000000",
             fingerprint: "0000000000000000000000000000000",
             publicKey: "age1testtesttesttesttesttesttest",
