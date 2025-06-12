@@ -21,7 +21,7 @@ const BaseBottomSheet = forwardRef<CoreBottomSheet, BottomSheetProps>((props: Bo
         height,
         bottomInset = 0,
         onClose,
-        defaultOpen
+        defaultOpen = false
     } = props;
 
     const { isReady } = useReady();
@@ -30,8 +30,8 @@ const BaseBottomSheet = forwardRef<CoreBottomSheet, BottomSheetProps>((props: Bo
     const { top, bottom } = useSafeArea();
     const { default: backgroundColor } = useThemeColor("background");
     const { default: textColor } = useThemeColor("text");
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [isCloseRequested, setIsCloseRequested] = useState<boolean>(false);
+    const [isOpen, setIsOpen] = useState<boolean>(defaultOpen);
+    const [isCloseRequested, setIsCloseRequested] = useState<boolean>(defaultOpen ? true : false);
     const onChange = useCallback((index: number) => setIsOpen(index >= 0), [isReady]);
     const contentHeight = useMemo(() => height ?? Dimensions.get("screen").height * 0.25, [height]);
 
@@ -61,7 +61,7 @@ const BaseBottomSheet = forwardRef<CoreBottomSheet, BottomSheetProps>((props: Bo
     }, [isReady, isOpen, onClose]);
 
     useEffect(() => {
-        if (!isReady || isCloseRequested) return;
+        if (!isReady || isCloseRequested) return handleClose();
         if (isOpen || !isKeyboardVisible) {
             snapToPoint();
             return;
