@@ -37,5 +37,6 @@ export const Basic: Story = {
                 <Text>Hello world!</Text>
             </BottomSheetView>
         ),
+        defaultOpen: true,
     },
 };

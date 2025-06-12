@@ -6,6 +6,7 @@ import { useThemeColor } from "@hooks/useThemeColor";
 import { toRGB } from "@libs/color";
 import { useSafeArea } from "./hooks/useSafeArea";
 import useKeyboard from "@hooks/useKeyboard";
+import useReady from "@hooks/useReady";
 
 const BackdropComponent = memo((props: BottomSheetBackdropProps) => (
     <BottomSheetBackdrop {...props}
@@ -20,15 +21,18 @@ const BaseBottomSheet = forwardRef<CoreBottomSheet, BottomSheetProps>((props: Bo
         height,
         bottomInset = 0,
         onClose,
+        defaultOpen
     } = props;
 
+    const { isReady } = useReady();
     const { isVisible: isKeyboardVisible, dismiss: dismissKeyboard } = useKeyboard();
     const innerRef = useRef<CoreBottomSheet>(null);
     const { top, bottom } = useSafeArea();
     const { default: backgroundColor } = useThemeColor("background");
     const { default: textColor } = useThemeColor("text");
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const onChange = useCallback((index: number) => setIsOpen(index >= 0), []);
+    const [isCloseRequested, setIsCloseRequested] = useState<boolean>(false);
+    const onChange = useCallback((index: number) => setIsOpen(index >= 0), [isReady]);
     const contentHeight = useMemo(() => height ?? Dimensions.get("screen").height * 0.25, [height]);
 
     useImperativeHandle(outerRef, () => ({
@@ -41,31 +45,36 @@ const BaseBottomSheet = forwardRef<CoreBottomSheet, BottomSheetProps>((props: Bo
     }), []);
 
     const snapToPoint = useCallback(() => {
+        if (!isReady) return;
         if (!innerRef.current) return false;
+        setIsCloseRequested(false);
         innerRef.current.snapToIndex(0);
         return true;
-    }, [innerRef.current, contentHeight]);
+    }, [innerRef.current, isReady]);
 
     const handleClose = useCallback(() => {
-        if (!isOpen) return;
+        if (!isOpen || !isReady) return;
         if (typeof onClose !== "function") return;
         dismissKeyboard();
         onClose();
-    }, [isOpen, onClose]);
+        setIsCloseRequested(true);
+    }, [isReady, isOpen, onClose]);
 
     useEffect(() => {
+        if (!isReady || isCloseRequested) return;
         if (isOpen || !isKeyboardVisible) {
             snapToPoint();
             return;
         }
         handleClose();
-    }, [isKeyboardVisible, isOpen, handleClose, snapToPoint]);
+    }, [isCloseRequested, isReady, isKeyboardVisible, isOpen, handleClose, snapToPoint]);
 
     return (
         <CoreBottomSheet
             ref={innerRef}
-            index={-1}
+            index={defaultOpen ? 1 : -1}
             onChange={onChange}
+            onClose={() => setIsCloseRequested(true)}
             snapPoints={[contentHeight]}
             topInset={top}
             enablePanDownToClose
