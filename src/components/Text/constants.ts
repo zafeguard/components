@@ -10,6 +10,7 @@ export type TextProps = {
     readonly color?: ColorValue;
     readonly style?: StyleProp<TextStyle>;
     readonly center?: boolean;
+    readonly fluid?: boolean;
 };
 export const TEXT_VARIANTS = {
     default: StyleSheet.create({

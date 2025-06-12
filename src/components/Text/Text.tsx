@@ -13,6 +13,7 @@ function TextComponent(props: TextProps) {
         color,
         style,
         center,
+        fluid,
     } = props;
     const { default: defaultColor } = useThemeColor("text");
 
@@ -25,7 +26,7 @@ function TextComponent(props: TextProps) {
                     opacity: muted ? 0.75 : 1,
                     color: color ?? defaultColor,
                     textAlign: center ? "center" : undefined,
-                    width: "100%",
+                    width: fluid ? "100%" : "auto",
                 },
                 style,
             ]}
