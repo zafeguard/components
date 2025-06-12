@@ -1,21 +1,20 @@
 import { memo, useMemo } from "react";
-import { RegistryQRCodeProps } from "./constants";
-import { UrFountainEncoder } from "@ngraveio/bc-ur";
+import { DEFAULT_MAX_FRAGMENT_LENGTH, DEFAULT_MIN_FRAGMENT_LENGTH, getRegistryQR, RegistryQRCodeProps } from "./constants";
 import { QRCode } from "@components/QRCode";
 
 function BaseRegistryQRCode(props: RegistryQRCodeProps) {
     const {
         registry,
-        minFragmentLength = 10,
-        maxFragmentLength = 15,
+        minFragmentLength = DEFAULT_MIN_FRAGMENT_LENGTH,
+        maxFragmentLength = DEFAULT_MAX_FRAGMENT_LENGTH,
         ...rest
     } = props;
 
-    const payloads = useMemo(() => {
-        const encoder = new UrFountainEncoder(registry, maxFragmentLength, minFragmentLength);
-        const fragments = encoder.getAllPartsUr();
-        return fragments.map(fragment => fragment.toString());
-    }, [registry]);
+    const payloads = useMemo(() => getRegistryQR({
+        registry,
+        minFragmentLength,
+        maxFragmentLength,
+    }), [registry, minFragmentLength, maxFragmentLength]);
 
     return (
         <QRCode
