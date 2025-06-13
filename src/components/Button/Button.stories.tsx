@@ -49,3 +49,17 @@ export const SideComponent: Story = {
     rightComponent: () => <Text>Right Component</Text>,
   }
 }
+export const Small: Story = {
+  args: {
+    onPress: fn(),
+    size: "sm",
+    variant: "dark"
+  },
+};
+export const Mini: Story = {
+  args: {
+    onPress: fn(),
+    size: "xs",
+    variant: "dark"
+  },
+};
