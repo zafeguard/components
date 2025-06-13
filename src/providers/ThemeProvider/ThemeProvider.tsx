@@ -1,5 +1,5 @@
 import { DarkTheme, DefaultTheme, ThemeProvider as RNThemeProvider } from "@react-navigation/native";
-import { memo, PropsWithChildren, useMemo, useState } from "react";
+import { memo, PropsWithChildren, useEffect, useMemo, useState } from "react";
 import { Context } from "@contexts/Theme";
 import { EColorScheme } from "@constants/scheme";
 import { useFonts } from 'expo-font';
@@ -12,15 +12,17 @@ function BaseProvider(props: Props) {
     const { theme: overriddenTheme } = props;
     const [theme, setTheme] = useState<EColorScheme>(overriddenTheme ?? EColorScheme.AUTO);
 
+    useEffect(() => setTheme(overriddenTheme as EColorScheme), [overriddenTheme]);
+
     const nativeTheme = useMemo(() => {
-        switch (overriddenTheme ?? theme) {
+        switch (theme) {
             case EColorScheme.LIGHT:
                 return DefaultTheme;
             case EColorScheme.DARK:
                 return DarkTheme;
             default: return DefaultTheme;
         }
-    }, [overriddenTheme, theme]);
+    }, [theme]);
 
     const [fontLoaded] = useFonts({
         'Poppins-Regular': require('./fonts/Poppins-Regular.ttf'),
