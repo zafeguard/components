@@ -1,7 +1,7 @@
 import { BORDER_RADIUS, VARIANTS } from '@constants/variants';
 import { useThemeColor } from '@hooks/useThemeColor';
 import * as Haptics from 'expo-haptics';
-import { Fragment, memo, useCallback } from "react";
+import { memo, useCallback } from "react";
 import {
     Platform,
     StyleSheet,
@@ -71,9 +71,9 @@ function BaseButton(props: ButtonProps) {
                         <Text
                             style={[
                                 {
+                                    width: "auto",
                                     textAlign: "center",
                                     fontSize: BUTTON_SIZES[size ?? "md"].fontSize,
-                                    flex: 1,
                                     color: variantProps.text ?? textColor.default,
                                 },
                             ]}
