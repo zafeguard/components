@@ -1,4 +1,4 @@
-import { RegistryItemHelper } from "@libs/ur-helper/registry";
+import { GenericRegistryItemBase, RegistryItemHelper } from "@libs/ur-helper/registry";
 
 type KeyPairPayload = {
     readonly privateKey: string;
@@ -9,7 +9,7 @@ type Payload = {
     readonly curve: string;
     readonly keyShare: string;
     readonly publicKeys: string[];
-    readonly keyPair: KeyPairPayload;
+    readonly keyPair: GenericRegistryItemBase<KeyPairPayload>;
 };
 export const KeyPairExportRegistry = RegistryItemHelper.createKeyMap<Record<keyof KeyPairPayload, number>, KeyPairPayload>({
     privateKey: 1,

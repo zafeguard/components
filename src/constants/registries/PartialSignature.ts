@@ -1,11 +1,11 @@
-import { RegistryItemHelper } from "@libs/ur-helper/registry";
+import { GenericRegistryItemBase, RegistryItemHelper } from "@libs/ur-helper/registry";
 
 type ValuePayload = {
     readonly messageHash: string;
     readonly partialSignature: string;
 };
 type Payload = {
-    readonly values: ValuePayload[];
+    readonly values: GenericRegistryItemBase<ValuePayload>[];
     readonly publicKey: string;
 };
 

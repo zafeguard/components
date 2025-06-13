@@ -8,7 +8,9 @@ import {
     createBatchSignature,
     createBatchSignRequest,
     createPartialSignature,
-    createKeyRecover
+    createKeyRecover,
+    PartialSignatureItemRegistry,
+    KeyPairExportRegistry
 } from "@constants/registries";
 import { Text } from "@components/Text";
 import { View } from "@components/View";
@@ -79,10 +81,10 @@ export const KeyExport: Story = {
             curve: "SECP256K1",
             keyShare: "00000000000000000000000000000000",
             publicKeys: ["age1testtesttesttesttesttesttest", "age1testtesttesttesttesttesttest"],
-            keyPair: {
+            keyPair: new KeyPairExportRegistry({
                 privateKey: "AGE-IDENTITY-0000000000000000000000000000000000",
                 publicKey: "age1testtesttesttesttesttesttest",
-            },
+            }),
         }),
     },
 };
@@ -124,18 +126,18 @@ export const PartialSignature: Story = {
     args: {
         registry: createPartialSignature({
             values: [
-                {
+                new PartialSignatureItemRegistry({
                     messageHash: "000000000000000000000000000000",
                     partialSignature: "00000000000000000000000000000000000000000000000000000000000000",
-                },
-                {
+                }),
+                new PartialSignatureItemRegistry({
                     messageHash: "000000000000000000000000000000",
                     partialSignature: "00000000000000000000000000000000000000000000000000000000000000",
-                },
-                {
+                }),
+                new PartialSignatureItemRegistry({
                     messageHash: "000000000000000000000000000000",
                     partialSignature: "00000000000000000000000000000000000000000000000000000000000000",
-                },
+                }),
             ],
             publicKey: "age1testtesttesttesttesttesttest"
         })
