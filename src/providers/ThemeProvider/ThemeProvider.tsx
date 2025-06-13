@@ -4,6 +4,7 @@ import { Context } from "@contexts/Theme";
 import { EColorScheme } from "@constants/scheme";
 import { useFonts } from 'expo-font';
 import { PortalProvider } from "@gorhom/portal";
+import { useColorScheme } from "react-native";
 
 type Props = PropsWithChildren<{
     readonly theme?: EColorScheme;
@@ -12,16 +13,21 @@ function BaseProvider(props: Props) {
     const { theme: overriddenTheme } = props;
     const [theme, setTheme] = useState<EColorScheme>(overriddenTheme ?? EColorScheme.AUTO);
 
+    const systemTheme = useColorScheme();
     useEffect(() => setTheme(overriddenTheme as EColorScheme), [overriddenTheme]);
 
     const nativeTheme = useMemo(() => {
-        switch (theme) {
-            case EColorScheme.LIGHT:
-                return DefaultTheme;
-            case EColorScheme.DARK:
-                return DarkTheme;
-            default: return DefaultTheme;
+        const getTheme = (scheme: EColorScheme) => {
+            switch (scheme) {
+                case EColorScheme.LIGHT:
+                    return DefaultTheme;
+                case EColorScheme.DARK:
+                    return DarkTheme;
+                default: return DefaultTheme;
+            }
         }
+        if (theme === EColorScheme.AUTO) return getTheme(systemTheme as EColorScheme);
+        return getTheme(theme);
     }, [theme]);
 
     const [fontLoaded] = useFonts({
