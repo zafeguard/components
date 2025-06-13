@@ -8,7 +8,7 @@ import { PortalProvider } from "@gorhom/portal";
 type Props = PropsWithChildren<{
     readonly theme?: EColorScheme;
 }>;
-function Provider(props: Props) {
+function BaseProvider(props: Props) {
     const { theme: overriddenTheme } = props;
     const [theme, setTheme] = useState<EColorScheme>(overriddenTheme ?? EColorScheme.AUTO);
 
@@ -23,15 +23,15 @@ function Provider(props: Props) {
     }, [overriddenTheme, theme]);
 
     const [fontLoaded] = useFonts({
-        'Poppins-Regular': require('@assets/fonts/Poppins-Regular.ttf'),
-        'Poppins-Bold': require('@assets/fonts/Poppins-Bold.ttf'),
-        'Poppins-SemiBold': require('@assets/fonts/Poppins-SemiBold.ttf'),
-        'Poppins-Italic': require('@assets/fonts/Poppins-Italic.ttf'),
-        'Poppins-BoldItalic': require('@assets/fonts/Poppins-BoldItalic.ttf'),
-        'Poppins-Light': require('@assets/fonts/Poppins-Light.ttf'),
-        'Poppins-Medium': require('@assets/fonts/Poppins-Medium.ttf'),
-        'Monospace': require('@assets/fonts/Monospace.ttf'),
-        'Monospace-Bold': require('@assets/fonts/Monospace-Bold.ttf'),
+        'Poppins-Regular': require('./fonts/Poppins-Regular.ttf'),
+        'Poppins-Bold': require('./fonts/Poppins-Bold.ttf'),
+        'Poppins-SemiBold': require('./fonts/Poppins-SemiBold.ttf'),
+        'Poppins-Italic': require('./fonts/Poppins-Italic.ttf'),
+        'Poppins-BoldItalic': require('./fonts/Poppins-BoldItalic.ttf'),
+        'Poppins-Light': require('./fonts/Poppins-Light.ttf'),
+        'Poppins-Medium': require('./fonts/Poppins-Medium.ttf'),
+        'Monospace': require('./fonts/Monospace.ttf'),
+        'Monospace-Bold': require('./fonts/Monospace-Bold.ttf'),
     });
 
     return (
@@ -44,5 +44,6 @@ function Provider(props: Props) {
         </Context.Provider>
     );
 }
-const ThemeProvider = memo(Provider);
-export { ThemeProvider };
+const ThemeProvider = memo(BaseProvider);
+ThemeProvider.displayName = "ThemeProvider";
+export default ThemeProvider;
