@@ -5,4 +5,5 @@ export type RegistryQRScannerProps = {
     readonly allowedItems: Array<RegistryItemClass<RegistryItemBase>>;
     readonly size?: number;
     readonly onDetected?: (result: GenericRegistryItemBase<any>) => void;
+    readonly disabled?: boolean;
 };

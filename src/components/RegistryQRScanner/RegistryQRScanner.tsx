@@ -16,7 +16,8 @@ function BaseRegistryQRScanner(props: RegistryQRScannerProps) {
     const {
         allowedItems,
         size,
-        onDetected
+        onDetected,
+        disabled,
     } = props;
     const { muted: mutedBgColor } = useThemeColor("text");
     const { isReady } = useReady();
@@ -97,7 +98,7 @@ function BaseRegistryQRScanner(props: RegistryQRScannerProps) {
             ]}
             gap={0}
         >
-            {isReady && (
+            {(isReady && cameraActive && !disabled) && (
                 <CameraView
                     style={styles.cameraCanvas}
                     facing={"back"}
@@ -105,7 +106,7 @@ function BaseRegistryQRScanner(props: RegistryQRScannerProps) {
                         barcodeTypes: ["qr"]
                     }}
                     onBarcodeScanned={(result) => handleDetected(result)}
-                    active={cameraActive && isReady}
+                    active={cameraActive && isReady && !disabled}
                 />
             )}
             <ProgressBar
