@@ -1,4 +1,5 @@
-import { RegistryItemHelper } from "@libs/ur-helper/registry";
+import { RegistryItemHelper } from "@libs/ur";
+import { UrRegistry } from "@ngraveio/bc-ur";
 
 type Payload = {
     readonly sessionId: string;
@@ -22,3 +23,4 @@ export const SecureShareRegistry = RegistryItemHelper.createKeyMap<Record<keyof 
 }, "secure-share", CDDL);
 export const createSecureShare = (payload: Payload) => new SecureShareRegistry(payload);
 export type SecureShareRegistryItem = ReturnType<typeof createSecureShare>;
+UrRegistry.addItem(SecureShareRegistry);

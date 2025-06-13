@@ -1,4 +1,4 @@
-import { RegistryItemHelper } from "@libs/ur-helper/registry";
+import { createRegistry, GenericRegistryItemBase, RegistryItemHelper } from "@libs/ur";
 import { UrRegistry } from "@ngraveio/bc-ur";
 
 type ItemPayload = {
@@ -7,7 +7,7 @@ type ItemPayload = {
     readonly messageHash: string;
 };
 type CollectionPayload = {
-    readonly items: ItemPayload[];
+    readonly items: Array<GenericRegistryItemBase<ItemPayload>>;
 };
 const Collection_CDDL = `
 batch-signature = {
@@ -30,11 +30,9 @@ export const SignatureItemRegistry = RegistryItemHelper.createKeyMap<Record<keyo
 export const BatchSignatureRegistry = RegistryItemHelper.createKeyMap<Record<keyof CollectionPayload, number>, CollectionPayload>({
     items: 1,
 }, "batch-signature", Collection_CDDL, 601);
-export const createBatchSignature = (payload: Array<ItemPayload>) => {
-    UrRegistry.addItem(SignatureItemRegistry);
-    UrRegistry.addItem(BatchSignatureRegistry);
-    return new BatchSignatureRegistry({
-        items: payload.map(item => new SignatureItemRegistry(item))
-    });
-}
+export const createBatchSignature = (payload: Array<ItemPayload>) => createRegistry(BatchSignatureRegistry, {
+    items: payload.map(item => new SignatureItemRegistry(item))
+})
 export type BatchSignatureRegistryItem = ReturnType<typeof createBatchSignature>;
+UrRegistry.addItem(SignatureItemRegistry);
+UrRegistry.addItem(BatchSignatureRegistry);

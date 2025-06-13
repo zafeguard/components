@@ -1,4 +1,5 @@
-import { RegistryItemHelper } from "@libs/ur-helper/registry";
+import { RegistryItemHelper } from "@libs/ur";
+import { UrRegistry } from "@ngraveio/bc-ur";
 
 type Payload = {
     readonly curve: string;
@@ -16,3 +17,4 @@ export const SessionRegistry = RegistryItemHelper.createKeyMap<Record<keyof Payl
 }, "session");
 export const createSession = (payload: Payload) => new SessionRegistry(payload);
 export type SessionRegistryItem = ReturnType<typeof createSession>;
+UrRegistry.addItem(SessionRegistry);

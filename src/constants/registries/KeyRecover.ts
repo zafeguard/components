@@ -1,4 +1,5 @@
-import { RegistryItemHelper } from "@libs/ur-helper/registry";
+import { RegistryItemHelper } from "@libs/ur";
+import { UrRegistry } from "@ngraveio/bc-ur";
 
 type Payload = {
     readonly publicKey: string;
@@ -10,3 +11,4 @@ export const KeyRecoverRegistry = RegistryItemHelper.createKeyMap<Record<keyof P
 }, "key-recover");
 export const createKeyRecover = (payload: Payload) => new KeyRecoverRegistry(payload);
 export type KeyRecoverRegistryItem = ReturnType<typeof createKeyRecover>;
+UrRegistry.addItem(KeyRecoverRegistry);

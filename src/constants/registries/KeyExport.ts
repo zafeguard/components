@@ -1,4 +1,5 @@
-import { GenericRegistryItemBase, RegistryItemHelper } from "@libs/ur-helper/registry";
+import { createRegistry, GenericRegistryItemBase, RegistryItemHelper } from "@libs/ur";
+import { UrRegistry } from "@ngraveio/bc-ur";
 
 type KeyPairPayload = {
     readonly privateKey: string;
@@ -22,7 +23,7 @@ export const KeyExportRegistry = RegistryItemHelper.createKeyMap<Record<keyof Pa
     publicKeys: 3,
     keyPair: 4,
 }, "key-export");
-export const createKeyExport = (payload: Payload) => new KeyExportRegistry(Object.assign(payload, {
-    keyPair: new KeyPairExportRegistry(payload.keyPair),
-}));
+export const createKeyExport = (payload: Payload) => createRegistry(KeyExportRegistry, payload);
 export type KeyExportRegistryItem = ReturnType<typeof createKeyExport>;
+UrRegistry.addItem(KeyPairExportRegistry);
+UrRegistry.addItem(KeyExportRegistry);

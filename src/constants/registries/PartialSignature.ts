@@ -1,11 +1,12 @@
-import { GenericRegistryItemBase, RegistryItemHelper } from "@libs/ur-helper/registry";
+import { createRegistry, GenericRegistryItemBase, RegistryItemHelper } from "@libs/ur";
+import { UrRegistry } from "@ngraveio/bc-ur";
 
 type ValuePayload = {
     readonly messageHash: string;
     readonly partialSignature: string;
 };
 type Payload = {
-    readonly values: GenericRegistryItemBase<ValuePayload>[];
+    readonly values: Array<GenericRegistryItemBase<ValuePayload>>;
     readonly publicKey: string;
 };
 
@@ -18,7 +19,7 @@ export const PartialSignatureRegistry = RegistryItemHelper.createKeyMap<Record<k
     values: 1,
     publicKey: 2,
 }, "partial-signature");
-export const createPartialSignature = (payload: Payload) => new PartialSignatureRegistry(Object.assign(payload, {
-    values: payload.values.map(value => new PartialSignatureItemRegistry(value))
-}));
+export const createPartialSignature = (payload: Payload) => createRegistry(PartialSignatureRegistry, payload);
 export type PartialSignatureRegistryItem = ReturnType<typeof createPartialSignature>;
+UrRegistry.addItem(PartialSignatureItemRegistry);
+UrRegistry.addItem(PartialSignatureRegistry);

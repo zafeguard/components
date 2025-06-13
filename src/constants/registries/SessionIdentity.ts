@@ -1,4 +1,5 @@
-import { RegistryItemHelper } from "@libs/ur-helper/registry";
+import { RegistryItemHelper } from "@libs/ur";
+import { UrRegistry } from "@ngraveio/bc-ur";
 
 type Payload = {
     readonly sessionId: string;
@@ -14,3 +15,4 @@ export const SessionIdentityRegistry = RegistryItemHelper.createKeyMap<Record<ke
 }, "session-identity");
 export const createSessionIdentity = (payload: Payload) => new SessionIdentityRegistry(payload);
 export type SessionIdentityRegistryItem = ReturnType<typeof createSessionIdentity>;
+UrRegistry.addItem(SessionIdentityRegistry);

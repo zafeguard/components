@@ -1,4 +1,5 @@
-import { RegistryItemHelper } from "@libs/ur-helper/registry";
+import { RegistryItemHelper } from "@libs/ur";
+import { UrRegistry } from "@ngraveio/bc-ur";
 
 type Payload = {
     readonly nonce: string;
@@ -14,3 +15,4 @@ export const BatchSignRequestRegistry = RegistryItemHelper.createKeyMap<Record<k
 }, "batch-sign-request");
 export const createBatchSignRequest = (payload: Payload) => new BatchSignRequestRegistry(payload);
 export type BatchSignRequestRegistryItem = ReturnType<typeof createBatchSignRequest>;
+UrRegistry.addItem(BatchSignRequestRegistry);

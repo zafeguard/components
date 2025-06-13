@@ -10,7 +10,7 @@ import {
     createPartialSignature,
     createKeyRecover,
     PartialSignatureItemRegistry,
-    KeyPairExportRegistry
+    KeyPairExportRegistry,
 } from "@constants/registries";
 import { Text } from "@components/Text";
 import { View } from "@components/View";
@@ -26,6 +26,11 @@ const meta = {
                 <View align="flex-start">
                     <Text variant="default" weight="bold">Payload</Text>
                     <Text variant="mono" size="xs">{JSON.stringify(context.args.registry.data, undefined, 4)}</Text>
+                </View>
+                <View align="flex-start">
+                    <Text variant="default" weight="bold">QR</Text>
+                    <Text variant="mono" size="xs">{JSON.stringify(context.args.registry.keyMap)}</Text>
+                    <Text>{context.args.registry.toBytes().byteLength} bytes</Text>
                 </View>
             </View>
         ),

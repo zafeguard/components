@@ -8,9 +8,10 @@ import useReady from "@hooks/useReady";
 import { Button } from "@components/Button";
 import { Icon } from "@components/Icon";
 import { Text } from "@components/Text";
-import { UrFountainDecoder, UrRegistry } from "@ngraveio/bc-ur";
+import { UrFountainDecoder } from "@ngraveio/bc-ur";
 import { ProgressBar } from "@components/ProgressBar";
 import { useThemeColor } from "@hooks/useThemeColor";
+import { createRegistry, fromUR, GenericRegistryItemBase } from "@libs/ur";
 
 function BaseRegistryQRScanner(props: RegistryQRScannerProps) {
     const {
@@ -56,7 +57,8 @@ function BaseRegistryQRScanner(props: RegistryQRScannerProps) {
                 if (decoder.expectedType !== Registry.URType) continue;
                 const registry = Registry.fromCBORData(resultUR.getPayloadCbor());
                 if (!registry) continue;
-                onDetected(decoder.getDecodedData());
+                const rawDecoded = decoder.getDecodedData() as GenericRegistryItemBase<any>;
+                onDetected(createRegistry(Registry, fromUR(rawDecoded.data)));
                 break;
             }
             return reset();
@@ -65,13 +67,6 @@ function BaseRegistryQRScanner(props: RegistryQRScannerProps) {
             reset();
         }
     }, [decoder, onDetected]);
-    useEffect(() => {
-        if (allowedItems.length <= 0) return;
-        UrRegistry.addItems(allowedItems);
-        return () => {
-            UrRegistry.clearRegistry();
-        }
-    }, [allowedItems]);
 
     if (!permission || !permission.granted) return (
         <View style={styles.grantPermissionContainer} justify="center">

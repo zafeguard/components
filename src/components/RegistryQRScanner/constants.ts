@@ -1,4 +1,4 @@
-import { GenericRegistryItemBase } from "@libs/ur-helper";
+import { GenericRegistryItemBase } from "@libs/ur";
 import { RegistryItemBase, RegistryItemClass } from "@ngraveio/bc-ur";
 
 export type RegistryQRScannerProps = {

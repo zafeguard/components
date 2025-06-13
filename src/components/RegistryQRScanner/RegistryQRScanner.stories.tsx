@@ -41,7 +41,7 @@ export const Basic: Story = {
             SecureShareRegistry,
             SessionRegistry,
         ],
-        onDetected: (result) => console.log(result),
+        onDetected: (result) => console.log("Result:", result),
         size: 256,
     },
 };
