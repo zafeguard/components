@@ -18,6 +18,7 @@ export type ButtonProps = {
     readonly hapticTouch?: boolean;
     readonly disabled?: boolean;
     readonly style?: StyleProp<ViewStyle>;
+    readonly compact?: boolean;
 };
 
 export const BUTTON_SIZES = StyleSheet.create({

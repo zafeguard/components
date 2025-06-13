@@ -23,6 +23,7 @@ function BaseButton(props: ButtonProps) {
         disabled,
         style,
         fluid,
+        compact = false,
     } = props;
     const isOutlineStyle = variant === 'outline';
     const variantProps = VARIANTS[variant];
@@ -37,11 +38,12 @@ function BaseButton(props: ButtonProps) {
     }, [onPress, hapticTouch, disabled]);
 
     const createComponent = useCallback((component?: ButtonSubComponent) => {
-        if (!component) return <View style={{ width: 12 }} />;
+        const fontSize = BUTTON_SIZES[size ?? "md"].fontSize;
+        if (!component) return <View style={{ width: fontSize - 4 }} />;
         if (typeof component === "function")
             return component({
                 color: variantProps.text ?? textColor.default,
-                size: BUTTON_SIZES[size ?? "md"].fontSize + 4
+                size: fontSize + 4
             });
         return component;
     }, []);
@@ -66,12 +68,12 @@ function BaseButton(props: ButtonProps) {
         >
             <View style={styles.container}>
                 {[
-                    createComponent(leftComponent),
+                    (!compact || leftComponent) && createComponent(leftComponent),
                     text && (
                         <Text
                             style={[
                                 {
-                                    width: "auto",
+                                    flex: 1,
                                     textAlign: "center",
                                     fontSize: BUTTON_SIZES[size ?? "md"].fontSize,
                                     color: variantProps.text ?? textColor.default,
@@ -81,7 +83,7 @@ function BaseButton(props: ButtonProps) {
                             {text}
                         </Text>
                     ),
-                    createComponent(rightComponent),
+                    (!compact || rightComponent) && createComponent(rightComponent),
                 ]}
             </View>
         </TouchableOpacity>
