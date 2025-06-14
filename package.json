@@ -100,8 +100,7 @@
         "default": "./dist/commonjs/index.js"
       }
     },
-    "./package.json": "./package.json",
-    "./tsconfig.json": "./tsconfig.json"
+    "./package.json": "./package.json"
   },
   "module": "./dist/module/index.js",
   "types": "./dist/typescript/commonjs/src/index.d.ts",
@@ -110,7 +109,8 @@
     "!**/__tests__",
     "!**/__fixtures__",
     "!**/__mocks__",
-    "assets"
+    "assets",
+    "react-native.config.js"
   ],
   "react-native-builder-bob": {
     "source": "src",
