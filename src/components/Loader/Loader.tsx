@@ -6,6 +6,7 @@ import { View } from "@components/View";
 import { Text } from "@components/Text";
 import { useDot } from "./hooks/useDot";
 import { Wrapper } from "./Wrapper";
+import { toRGB } from "@libs/color";
 
 function BaseLoader(props: LoaderProps) {
     const {
@@ -40,8 +41,7 @@ function BaseLoader(props: LoaderProps) {
                     flex: 1,
                     width: "100%",
                     height: "100%",
-                    backgroundColor: backdrop?.backgroundColor ?? "black",
-                    opacity: backdrop?.opacity ?? 0.85,
+                    backgroundColor: toRGB(backdrop?.backgroundColor ?? "#000000", 0.20),
                 } : {}}
             >
                 <ActivityIndicator
