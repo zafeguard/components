@@ -2,9 +2,9 @@ import { DarkTheme, DefaultTheme, ThemeProvider as RNThemeProvider } from "@reac
 import { memo, PropsWithChildren, useEffect, useMemo, useState } from "react";
 import { Context } from "@contexts/Theme";
 import { EColorScheme } from "@constants/scheme";
-import { useFonts } from 'expo-font';
 import { PortalProvider } from "@gorhom/portal";
 import { useColorScheme } from "react-native";
+import { useFonts } from "@hooks/useFonts";
 
 type Props = PropsWithChildren<{
     readonly theme?: EColorScheme;
@@ -13,6 +13,7 @@ function BaseProvider(props: Props) {
     const { theme: overriddenTheme } = props;
     const [theme, setTheme] = useState<EColorScheme>(overriddenTheme ?? EColorScheme.AUTO);
 
+    const { fontLoaded } = useFonts();
     const systemTheme = useColorScheme();
     useEffect(() => setTheme(overriddenTheme as EColorScheme), [overriddenTheme]);
 
@@ -29,18 +30,6 @@ function BaseProvider(props: Props) {
         if (theme === EColorScheme.AUTO) return getTheme(systemTheme as EColorScheme);
         return getTheme(theme);
     }, [theme]);
-
-    const [fontLoaded] = useFonts({
-        'Poppins-Regular': require('./fonts/Poppins-Regular.ttf'),
-        'Poppins-Bold': require('./fonts/Poppins-Bold.ttf'),
-        'Poppins-SemiBold': require('./fonts/Poppins-SemiBold.ttf'),
-        'Poppins-Italic': require('./fonts/Poppins-Italic.ttf'),
-        'Poppins-BoldItalic': require('./fonts/Poppins-BoldItalic.ttf'),
-        'Poppins-Light': require('./fonts/Poppins-Light.ttf'),
-        'Poppins-Medium': require('./fonts/Poppins-Medium.ttf'),
-        'Monospace': require('./fonts/Monospace.ttf'),
-        'Monospace-Bold': require('./fonts/Monospace-Bold.ttf'),
-    });
 
     return (
         <Context.Provider value={{ theme, setTheme, fontLoaded }}>
