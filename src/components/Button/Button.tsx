@@ -1,7 +1,7 @@
 import { BORDER_RADIUS, VARIANTS } from '@constants/variants';
 import { useThemeColor } from '@hooks/useThemeColor';
 import * as Haptics from 'expo-haptics';
-import React, { memo, useCallback } from "react";
+import { memo, useCallback } from "react";
 import {
     Platform,
     StyleSheet,
@@ -11,6 +11,27 @@ import {
 } from "react-native";
 import { BUTTON_SIZES, ButtonProps, ButtonSubComponent } from './contants';
 
+function SideComponent(props: {
+    readonly size?: keyof typeof BUTTON_SIZES;
+    readonly component?: ButtonSubComponent;
+    readonly variant?: keyof typeof VARIANTS;
+}) {
+    const {
+        component,
+        variant = "primary",
+        size = "md",
+    } = props;
+    const textColor = useThemeColor("text");
+    const variantProps = VARIANTS[variant];
+    const fontSize = BUTTON_SIZES[size ?? "md"].fontSize;
+    if (!component) return <View style={{ width: fontSize - 4 }} />;
+    if (typeof component === "function")
+        return component({
+            color: variantProps.text ?? textColor.default,
+            size: fontSize + 4
+        });
+    return component;
+};
 function BaseButton(props: ButtonProps) {
     const {
         text,
@@ -37,17 +58,6 @@ function BaseButton(props: ButtonProps) {
         return onPress();
     }, [onPress, hapticTouch, disabled]);
 
-    const createSideComponent = useCallback((component?: ButtonSubComponent) => {
-        const fontSize = BUTTON_SIZES[size ?? "md"].fontSize;
-        if (!component) return <View style={{ width: fontSize - 4 }} />;
-        if (typeof component === "function")
-            return component({
-                color: variantProps.text ?? textColor.default,
-                size: fontSize + 4
-            });
-        return component;
-    }, []);
-
     return (
         <TouchableOpacity
             style={[
@@ -68,9 +78,11 @@ function BaseButton(props: ButtonProps) {
         >
             <View style={styles.container}>
                 {[
-                    (!compact || leftComponent) && React.cloneElement(
-                        createSideComponent(leftComponent),
-                        { key: "button-left-component" }
+                    (!compact || leftComponent) && (
+                        <SideComponent
+                            key={"button-left-component"}
+                            component={leftComponent}
+                        />
                     ),
                     text && (
                         <Text
@@ -87,9 +99,11 @@ function BaseButton(props: ButtonProps) {
                             {text}
                         </Text>
                     ),
-                    (!compact || rightComponent) && React.cloneElement(
-                        createSideComponent(rightComponent),
-                        { key: "button-right-component" }
+                    (!compact || rightComponent) && (
+                        <SideComponent
+                            key={"button-right-component"}
+                            component={rightComponent}
+                        />
                     ),
                 ]}
             </View>
