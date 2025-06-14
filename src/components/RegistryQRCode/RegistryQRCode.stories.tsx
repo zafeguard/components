@@ -83,6 +83,7 @@ export const Session: Story = {
 export const KeyExport: Story = {
     args: {
         registry: createKeyExport({
+            id: "0000000000000000000000000000000",
             curve: "SECP256K1",
             keyShare: "00000000000000000000000000000000",
             publicKeys: ["age1testtesttesttesttesttesttest", "age1testtesttesttesttesttesttest"],

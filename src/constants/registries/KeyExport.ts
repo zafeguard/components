@@ -7,6 +7,7 @@ type KeyPairPayload = {
     readonly fingerprint?: string;
 };
 type Payload = {
+    readonly id: string;
     readonly curve: string;
     readonly keyShare: string;
     readonly publicKeys: string[];
@@ -18,10 +19,11 @@ export const KeyPairExportRegistry = RegistryItemHelper.createKeyMap<Record<keyo
     fingerprint: 3,
 }, "keypair");
 export const KeyExportRegistry = RegistryItemHelper.createKeyMap<Record<keyof Payload, number>, Payload>({
-    curve: 1,
-    keyShare: 2,
-    publicKeys: 3,
-    keyPair: 4,
+    id: 1,
+    curve: 2,
+    keyShare: 3,
+    publicKeys: 4,
+    keyPair: 5,
 }, "key-export");
 export const createKeyExport = (payload: Payload) => createRegistry(KeyExportRegistry, payload);
 export type KeyExportRegistryItem = ReturnType<typeof createKeyExport>;
