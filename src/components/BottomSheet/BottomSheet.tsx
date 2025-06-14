@@ -1,5 +1,5 @@
 import { forwardRef, memo, Ref, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
-import { BottomSheetProps } from "./constants";
+import { BottomSheetProps, EBottomSheetState } from "./constants";
 import CoreBottomSheet, { BottomSheetBackdrop, BottomSheetBackdropProps } from "@gorhom/bottom-sheet";
 import { Dimensions, StyleSheet } from "react-native";
 import { useThemeColor } from "@hooks/useThemeColor";
@@ -21,6 +21,7 @@ const BaseBottomSheet = forwardRef<CoreBottomSheet, BottomSheetProps>((props: Bo
         height,
         bottomInset = 0,
         onClose,
+        onStateChange,
         defaultOpen = false
     } = props;
 
@@ -32,7 +33,9 @@ const BaseBottomSheet = forwardRef<CoreBottomSheet, BottomSheetProps>((props: Bo
     const { default: textColor } = useThemeColor("text");
     const [isOpen, setIsOpen] = useState<boolean>(defaultOpen);
     const [isCloseRequested, setIsCloseRequested] = useState<boolean>(defaultOpen ? true : false);
-    const onChange = useCallback((index: number) => setIsOpen(index >= 0), [isReady]);
+    const onChange = useCallback((index: number) => {
+        setIsOpen(index >= 0)
+    }, [isReady]);
     const contentHeight = useMemo(() => height ?? Dimensions.get("screen").height * 0.25, [height]);
 
     useImperativeHandle(outerRef, () => ({
@@ -68,6 +71,12 @@ const BaseBottomSheet = forwardRef<CoreBottomSheet, BottomSheetProps>((props: Bo
         }
         handleClose();
     }, [isCloseRequested, isReady, isKeyboardVisible, isOpen, handleClose, snapToPoint]);
+
+    useEffect(() => {
+        if (typeof onStateChange !== "function") return;
+        if (isOpen) return onStateChange(EBottomSheetState.OPEN);
+        return onStateChange(EBottomSheetState.CLOSED);
+    }, [isOpen])
 
     return (
         <CoreBottomSheet
