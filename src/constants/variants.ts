@@ -2,7 +2,7 @@ import { ColorValue } from "react-native";
 import { EColorScheme } from "./scheme";
 
 const TINT_COLOR_LIGHT = '#0a7ea4';
-const TINT_COLOR_DARK = '#fff';
+const TINT_COLOR_DARK = '#ffffff';
 
 export const BORDER_RADIUS = 15;
 export const WHITE = '#FFFFFF';
