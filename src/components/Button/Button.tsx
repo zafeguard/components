@@ -1,7 +1,7 @@
 import { BORDER_RADIUS, VARIANTS } from '@constants/variants';
 import { useThemeColor } from '@hooks/useThemeColor';
 import * as Haptics from 'expo-haptics';
-import { memo, useCallback } from "react";
+import React, { memo, useCallback } from "react";
 import {
     Platform,
     StyleSheet,
@@ -37,7 +37,7 @@ function BaseButton(props: ButtonProps) {
         return onPress();
     }, [onPress, hapticTouch, disabled]);
 
-    const createComponent = useCallback((component?: ButtonSubComponent) => {
+    const createSideComponent = useCallback((component?: ButtonSubComponent) => {
         const fontSize = BUTTON_SIZES[size ?? "md"].fontSize;
         if (!component) return <View style={{ width: fontSize - 4 }} />;
         if (typeof component === "function")
@@ -68,9 +68,13 @@ function BaseButton(props: ButtonProps) {
         >
             <View style={styles.container}>
                 {[
-                    (!compact || leftComponent) && createComponent(leftComponent),
+                    (!compact || leftComponent) && React.cloneElement(
+                        createSideComponent(leftComponent),
+                        { key: "button-left-component" }
+                    ),
                     text && (
                         <Text
+                            key={"button-main-component"}
                             style={[
                                 {
                                     flex: 1,
@@ -83,7 +87,10 @@ function BaseButton(props: ButtonProps) {
                             {text}
                         </Text>
                     ),
-                    (!compact || rightComponent) && createComponent(rightComponent),
+                    (!compact || rightComponent) && React.cloneElement(
+                        createSideComponent(rightComponent),
+                        { key: "button-right-component" }
+                    ),
                 ]}
             </View>
         </TouchableOpacity>
