@@ -109,7 +109,8 @@
     "dist",
     "!**/__tests__",
     "!**/__fixtures__",
-    "!**/__mocks__"
+    "!**/__mocks__",
+    "assets"
   ],
   "react-native-builder-bob": {
     "source": "src",
