@@ -16,11 +16,12 @@ module.exports = function (api) {
             '@hooks': './src/hooks',
             '@providers': './src/providers',
             '@libs': './src/libs',
-            '@constants': './src/constants'
+            '@constants': './src/constants',
+            '@assets': './assets',
           },
         },
       ],
-      ['@babel/plugin-transform-flow-strip-types', { allowDeclareFields: true }]
+      ['@babel/plugin-transform-flow-strip-types', { allowDeclareFields: true }],
     ],
   };
 };

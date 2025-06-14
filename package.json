@@ -14,7 +14,8 @@
     "storybook": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start",
     "storybook:ios": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start --ios",
     "storybook:android": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start --android",
-    "prepare": "bob build && tsc-alias --outDir dist/typescript/commonjs && tsc-alias --outDir dist/typescript/module"
+    "prepare": "bob build && tsc-alias --outDir dist/typescript/commonjs && tsc-alias --outDir dist/typescript/module",
+    "postinstall": "npx react-native-asset"
   },
   "repository": {
     "type": "git",
@@ -129,6 +130,11 @@
         }
       ],
       "typescript"
+    ]
+  },
+  "react-native": {
+    "assets": [
+      "./assets/fonts/"
     ]
   },
   "eslintIgnore": [
